@@ -2,7 +2,7 @@
 CC = g++
 CU = nvcc
 ## Flags
-FLAGS = -std=c++11 -O3 -w
+FLAGS = -std=c++11 -O3 -w -g
 CU_FLAGS = #-gencode=arch=compute_70,code=sm_70 -gencode=arch=compute_70,code=compute_70
 ##-Wno-deprecated-gpu-targets
 INC = -I./
@@ -70,7 +70,7 @@ $(DIR_OBJ)/test/test_api_gpu.o: test/test_api_gpu.cu
 
 $(DIR_BIN)/libcufhe_cpu.so: $(CC_OBJ)
 	$(dir_guard)
-	$(CU) $(FLAGS) $(CU_FLAGS) -shared -o $@ $(CC_OBJ)
+	$(CC) $(FLAGS) $(CC_FLAGS) -shared -o $@ $(CC_OBJ)
 
 $(DIR_BIN)/libcufhe_gpu.so: $(CU_OBJ) $(DIR_OBJ)/cufhe.o $(DIR_OBJ)/cufhe_io.o
 	$(dir_guard)

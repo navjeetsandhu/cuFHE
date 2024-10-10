@@ -23,8 +23,9 @@ For devices with Compute Capability less than 6.0, there is [an issue](https://g
   2. generate shared libraries `libcufhe_cpu.so` (CPU standalone),
   3. `libcufhe_gpu.so` (GPU support) in `bin` directory, and 3) create test and benchmarking executables `test_api_cpu` and `test_api_gpu` in `bin`.
 
-- Alternatively, run `make cpu` or `make gpu` for individual library and executable.
+- Alternatively, run `make: cpu` or `make gpu` for individual library and executable.
 - Copy the library files and `include` folder to any desirable location. Remember to export your library directory with `export LD_LIBRARY_PATH=directory`. Run `test_api_gpu` to see the latency per gate.
+- For MAC export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/YOUR_CODE_PATH/cuFHE/cufhe/bin
 - We provide a Python wrapper which uses boost-python tool. To use the Python interface, you will need
   1. a python interpreter, (probably in `/usr/bin/`)
   2. boost-python library, (Run `sudo apt-get install libboost-python-dev`, if you don't have it installed.)
